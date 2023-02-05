@@ -1,0 +1,54 @@
+# Byte-compiled / optimized / dll
+__pycache__/
+*.py[cod]
+*$py.class
+.vscode
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+*.exe
+
+# Formatters / Linters
+.mypy_cache/
+
+# Translations
+*.pot
+
+# Celery
+celerybeat-schedule
+celerybeat.pid
+
+# Environments
+local.env
+.env/
+.env_old/
+.evn2/
+.venv
+env/
+venv/
+ENV/
+
+# PyCharm
+.idea/
+
+# Others
+.ipynb_checkpoints/
+*.pem
+.DS_Store
+
+# Tests
+.pytest_cache/
