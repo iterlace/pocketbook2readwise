@@ -140,7 +140,10 @@ class Pocketbook:
 
         created_at = dt.datetime.fromtimestamp(data["mark"]["created"])
 
-        id_ = data.get("orig_id", data.get("uuid", data["mark"].get("anchor", None)))
+        fallback_id = None
+        if anchor := data["mark"].get("anchor", None):
+            fallback_id = f"{book.id}_{anchor}"
+        id_ = data.get("orig_id", data.get("uuid", fallback_id))
         return Highlight(
             book=book, id=id_, quote=quote, note=note, page=page, created_at=created_at
         )
