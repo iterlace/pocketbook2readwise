@@ -82,6 +82,8 @@ class Pocketbook:
         return urljoin(self.root, path)
 
     async def get_all_books(self) -> List[Book]:
+        assert self.is_authenticated
+
         async with self.session.get(self.url("books?limit=10000")) as response:
             assert response.status == 200
             items = (await response.json())["items"]
@@ -90,6 +92,8 @@ class Pocketbook:
         return books
 
     async def get_book_highlights(self, book: Book) -> Any:
+        assert self.is_authenticated
+
         url = self.url(f"notes?fast_hash={book.fast_hash}")
         async with self.session.get(url) as response:
             assert response.status == 200
@@ -112,6 +116,8 @@ class Pocketbook:
         return highlights
 
     async def get_highlight(self, book: Book, highlight_id: str) -> Highlight:
+        assert self.is_authenticated
+
         url = self.url(f"notes/{highlight_id}?fast_hash={book.fast_hash}")
         async with self.session.get(url=url) as response:
             assert response.status == 200
